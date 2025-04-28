@@ -27,6 +27,8 @@ switch (input)
     case "0":
         Console.WriteLine("Exiting the program.");
         goto Exit;
+
+    default: goto Exit;
 }
 
 goto BeforeSystem;

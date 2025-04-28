@@ -47,7 +47,9 @@ namespace MHODotNetTrainingD4
             }
 
 
-            Data.ProductId++;
+            //Data.ProductId++;
+            int no = Data.Products.Max(x => x.Id) + 1;
+            Data.ProductId = no;
 
             string productCode = "P" + Data.ProductId.ToString().PadLeft(3, '0');
 
@@ -114,8 +116,15 @@ namespace MHODotNetTrainingD4
                 Console.WriteLine("Product code cannot be null.");
                 goto BeforeInputCode;
             }
-            Data.Products.Remove(product);
-            Console.WriteLine("Product deleted successfully!");
+
+            Console.WriteLine("Are you sure to delete? Y/N ");
+            string ans = Console.ReadLine()!;
+           if(ans.ToUpper() == "Y")
+            {
+                Data.Products.Remove(product);
+                Console.WriteLine("Product deleted successfully!");
+            }
+           
         }
     }
    
